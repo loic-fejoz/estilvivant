@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+/* See CSS Mobile First */
+body,html {
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+a img {
+	text-decoration: none;
+	border: 0 none;
+}
+
+#main {
+	text-align: center;
+	margin: 0 auto;
+	width: 80%;
+}
+
+@media ( min-width : 400px) {
+	#answer {
+		margin-right: auto;
+		margin-left: auto;
+	}
+	#avatar {
+		float: left;
+		width: 200px;
+	}
+	#description {
+		float: right;
+	}
+	#partners {
+		clear: both;
+	}
+}
