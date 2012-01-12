@@ -3,6 +3,10 @@
  */
 package com.estilvivant.application;
 
+import java.util.List;
+
+import com.estilvivant.domain.persona.Persona;
+
 
 /**
  * @author Loïc Fejoz
@@ -14,4 +18,5 @@ public interface Answer {
 	String getAvatarImageURL();
 	String getAvatarLinkURL();
 	String getAvatarAnswer();
+	List<Persona> getSimilarPersona();
 }

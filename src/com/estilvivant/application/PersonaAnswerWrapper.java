@@ -5,31 +5,20 @@ package com.estilvivant.application;
 
 import java.util.List;
 
-import com.estilvivant.domain.persona.FoolAnswer;
 import com.estilvivant.domain.persona.Persona;
 
 /**
- * Build an Answer from a Fool one,
- * ie instantiate the generic FoolAnswer into a specific one. 
  * @author Loïc Fejoz
  *
  */
-public class FoolAnswerWrapper implements Answer {
+public class PersonaAnswerWrapper implements Answer {
 
-	private final String fts;
-	private final FoolAnswer foolAnswer;
-	private final List<Persona> similar;
+	private final List<Persona> seeAlso;
+	private final Persona persona;
 
-	/**
-	 * @param foolAnswer 
-	 * @param fullTextSearch 
-	 * @param similarPersonae 
-	 * 
-	 */
-	public FoolAnswerWrapper(final String fullTextSearch, final FoolAnswer foolAnswer, final List<Persona> similarPersonae) {
-		this.fts = fullTextSearch;
-		this.foolAnswer = foolAnswer;
-		this.similar = similarPersonae;
+	public PersonaAnswerWrapper(final String fullTextSearch, final Persona exactPersona, final List<Persona> seeAlsoPersonae) {
+		this.seeAlso = seeAlsoPersonae;
+		this.persona = exactPersona;
 	}
 
 	/* (non-Javadoc)
@@ -37,7 +26,7 @@ public class FoolAnswerWrapper implements Answer {
 	 */
 	@Override
 	public String getTitle() {
-		return String.format(foolAnswer.getTitleHtmlFormat(), fts);
+		return persona.getFullName() + "est-il mort ?";
 	}
 
 	/* (non-Javadoc)
@@ -45,7 +34,7 @@ public class FoolAnswerWrapper implements Answer {
 	 */
 	@Override
 	public String getAvatarName() {
-		return foolAnswer.getAvatarName();
+		return "Admin";
 	}
 
 	/* (non-Javadoc)
@@ -53,7 +42,7 @@ public class FoolAnswerWrapper implements Answer {
 	 */
 	@Override
 	public String getAvatarImageURL() {
-		return foolAnswer.getAvatarImageURL();
+		return "/images/Admin.png";
 	}
 
 	/* (non-Javadoc)
@@ -61,7 +50,7 @@ public class FoolAnswerWrapper implements Answer {
 	 */
 	@Override
 	public String getAvatarLinkURL() {
-		return foolAnswer.getAvatarLinkURL();
+		return "";
 	}
 
 	/* (non-Javadoc)
@@ -69,12 +58,15 @@ public class FoolAnswerWrapper implements Answer {
 	 */
 	@Override
 	public String getAvatarAnswer() {
-		return String.format(foolAnswer.getAnswerHtmlFormat(), fts);
+		return persona.getDescription();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.estilvivant.application.Answer#getSimilarPersona()
+	 */
 	@Override
 	public List<Persona> getSimilarPersona() {
-		return similar;
+		return seeAlso;
 	}
 
 }

@@ -27,5 +27,5 @@ public interface Persona {
      * @return permalink part
      * @ ensures \result != null
      */
-    
+    String getPermalink();
 }

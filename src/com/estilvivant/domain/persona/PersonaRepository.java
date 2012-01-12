@@ -3,6 +3,8 @@
  */
 package com.estilvivant.domain.persona;
 
+import java.util.List;
+
 /**
  * @author loic
  *
@@ -23,4 +25,32 @@ public interface PersonaRepository {
 	
 	void save(Persona personaToBeSaved);
 
+	/**
+	 * Search persona excatly identified by the given text.
+	 * Return null if none.
+	 * @param fullName
+	 * @return
+	 */
+	Persona exactSearch(String fullName);
+	
+	//TODO Persona findByPermalinkPart(String permalinkPart);
+	
+	/**
+	 * Return Persona with a similar name.
+	 * @param fullText
+	 * @return
+	 * @ requires fullText != null
+	 * @ ensures \result != null
+	 */
+	List<Persona> fullTextSearch(String fullText);
+
+	/**
+	 * Return Persona related to the given persona.
+	 * It could be homonyms, etc.
+	 * @param exactPersona
+	 * @return
+	 * @ requires exactPersona != null
+	 * @ ensures \result != null;
+	 */
+	List<Persona> searchSeeAlso(Persona exactPersona);
 }
