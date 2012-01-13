@@ -65,7 +65,7 @@ public class PersonaAnswerWrapper implements Answer {
 	 * @see com.estilvivant.application.Answer#getSimilarPersona()
 	 */
 	@Override
-	public List<Persona> getSimilarPersona() {
+	public List<Persona> getSimilarPersonae() {
 		return seeAlso;
 	}
 

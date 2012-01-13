@@ -18,5 +18,5 @@ public interface Answer {
 	String getAvatarImageURL();
 	String getAvatarLinkURL();
 	String getAvatarAnswer();
-	List<Persona> getSimilarPersona();
+	List<Persona> getSimilarPersonae();
 }

@@ -73,7 +73,7 @@ public class FoolAnswerWrapper implements Answer {
 	}
 
 	@Override
-	public List<Persona> getSimilarPersona() {
+	public List<Persona> getSimilarPersonae() {
 		return similar;
 	}
 
