@@ -26,7 +26,7 @@ public class PersonaAnswerWrapper implements Answer {
 	 */
 	@Override
 	public String getTitle() {
-		return persona.getFullName() + "est-il mort ?";
+		return persona.getFullName() + " est-il mort ?";
 	}
 
 	/* (non-Javadoc)
