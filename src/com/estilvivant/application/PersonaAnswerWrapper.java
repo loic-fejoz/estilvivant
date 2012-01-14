@@ -42,7 +42,7 @@ public class PersonaAnswerWrapper implements Answer {
 	 */
 	@Override
 	public String getAvatarImageURL() {
-		return "/images/Admin.png";
+		return "/images/mairin_Punk_Vampire.png";
 	}
 
 	/* (non-Javadoc)

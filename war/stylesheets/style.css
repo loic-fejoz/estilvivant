@@ -17,6 +17,15 @@ a img {
 	width: 80%;
 }
 
+#askhim {
+    background: transparent url(/images/mairin_Punk_Vampire.png) no-repeat center center;
+    width: 175px;
+    height: 250px;
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+}
+
 @media ( min-width : 400px) {
 	#answer {
 		margin-right: auto;
