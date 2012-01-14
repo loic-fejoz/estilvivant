@@ -29,7 +29,7 @@ a img {
 	#description {
 		float: right;
 	}
-	#partners {
+	#partners, #seealsodiv {
 		clear: both;
 	}
 }

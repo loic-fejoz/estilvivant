@@ -70,7 +70,15 @@ public enum PersonaRepositoryGAEImpl implements PersonaRepository {
 
 	@Override
 	public List<Persona> fullTextSearch(final String fullText) {
-		return Collections.emptyList();
+		final PersistenceManager pm = PMF.get().getPersistenceManager();
+        try {
+            final Query query = pm.newQuery(PersonaGAEImpl.class);
+            final List<Persona> personaeWithText = (List<Persona>)query.execute();
+            personaeWithText.size();
+            return personaeWithText;
+        } finally {
+            pm.close();
+        }
 	}
 
 	@Override

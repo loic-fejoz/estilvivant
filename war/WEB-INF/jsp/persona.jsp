@@ -22,7 +22,7 @@
     <div id="seealsodiv">
         <ul class="seealso">
             <c:forEach items="${ans.similarPersonae}" var="persona">
-                <li><a href="/search?q=${persona.name}">${persona.name}</a></li>
+                <li><a href="/search?q=${persona.fullName}">${persona.fullName}</a></li>
             </c:forEach>
         </ul>
     </div>
