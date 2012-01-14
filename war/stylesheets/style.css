@@ -14,7 +14,6 @@ a img {
 #main {
 	text-align: center;
 	margin: 0 auto;
-	width: 80%;
 }
 
 #askhim {
@@ -27,16 +26,24 @@ a img {
 }
 
 @media ( min-width : 400px) {
+	#main {
+	    width: 80%;
+	    min-width: 400px;
+	}
 	#answer {
 		margin-right: auto;
 		margin-left: auto;
+		width: 400px;
+/*		border: 1px solid red;*/
 	}
 	#avatar {
 		float: left;
-		width: 200px;
+		width: 200px;;
 	}
 	#description {
-		float: right;
+		float: left;
+		width: 200px;
+		text-align: left;
 	}
 	#partners, #seealsodiv {
 		clear: both;

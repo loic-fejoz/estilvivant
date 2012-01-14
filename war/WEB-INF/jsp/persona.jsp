@@ -16,7 +16,7 @@
   <div id="main">
     <h1>${ans.title}</h1>
     <div id="answer">
-        <a id="avatar" href="${ans.avatarLinkURL}" name="${ans.avatarName}"><img src="${ans.avatarImageURL}" /></a>
+        <div id="avatar"><a id="avatarlink" href="${ans.avatarLinkURL}" name="${ans.avatarName}"><img src="${ans.avatarImageURL}" /></a></div>
         <div id="description">${ans.avatarAnswer}</div>
     </div>
     <div id="seealsodiv">
