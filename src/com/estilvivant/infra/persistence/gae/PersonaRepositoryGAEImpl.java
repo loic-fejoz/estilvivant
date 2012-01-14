@@ -74,7 +74,7 @@ public enum PersonaRepositoryGAEImpl implements PersonaRepository {
         try {
             final Query query = pm.newQuery(PersonaGAEImpl.class);
             final List<Persona> personaeWithText = (List<Persona>)query.execute();
-            personaeWithText.size();
+            personaeWithText.size(); // See http://code.google.com/p/datanucleus-appengine/issues/detail?id=24
             return personaeWithText;
         } finally {
             pm.close();
