@@ -25,12 +25,21 @@ public enum AnswerBuilder {
 	public Answer buildAnswer(final String fullTextSearch) {
 		final Persona exactPersona = personaRepo.exactSearch(fullTextSearch);
 		if (exactPersona == null) {
-			final List<Persona> similarPersonae = personaRepo.fullTextSearch(fullTextSearch);
-			return new FoolAnswerWrapper(fullTextSearch, foolRepo.random(), similarPersonae);
+			final List<Persona> similarPersonae = personaRepo
+					.fullTextSearch(fullTextSearch);
+			return new FoolAnswerWrapper(fullTextSearch, foolRepo.random(),
+					similarPersonae);
 		} else {
-			final List<Persona> seeAlsoPersonae = personaRepo.searchSeeAlso(exactPersona);
-			return new PersonaAnswerWrapper(fullTextSearch, exactPersona, seeAlsoPersonae);
+			return buildAnswer(exactPersona);
 		}
-		
+
+	}
+
+	public Answer buildAnswer(final Persona persona) {
+		assert persona != null;
+		final List<Persona> seeAlsoPersonae = personaRepo
+				.searchSeeAlso(persona);
+		return new PersonaAnswerWrapper(persona.getFullName(), persona,
+				seeAlsoPersonae);
 	}
 }

@@ -33,7 +33,7 @@ public interface PersonaRepository {
 	 */
 	Persona exactSearch(String fullName);
 	
-	//TODO Persona findByPermalinkPart(String permalinkPart);
+	Persona findByPermalinkPart(String permalinkPart);
 	
 	/**
 	 * Return Persona with a similar name.

@@ -8,8 +8,10 @@ import javax.servlet.http.*;
 import com.estilvivant.application.Answer;
 import com.estilvivant.application.AnswerBuilder;
 
-@SuppressWarnings("serial")
 public class SearchServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1538477153308587973L;
+
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 

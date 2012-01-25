@@ -89,4 +89,19 @@ public enum PersonaRepositoryGAEImpl implements PersonaRepository {
 		return fullTextSearch(exactPersona.getFullName());
 	}
 
+	@Override
+	public Persona findByPermalinkPart(final String permalinkPart) {
+		final PersistenceManager pm = PMF.get().getPersistenceManager();
+        try {
+            final Query query = pm.newQuery(PersonaGAEImpl.class);
+            query.setFilter("permalinkPart == param");
+            query.setUnique(true);
+            query.declareParameters("String param");
+            final Persona personaWithGivenPermaLink = (Persona)query.execute(permalinkPart);
+            return personaWithGivenPermaLink;
+        } finally {
+            pm.close();
+        }
+	}
+
 }

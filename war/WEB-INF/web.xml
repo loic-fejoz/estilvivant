@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 	<servlet>
 		<servlet-name>SearchServlet</servlet-name>
 		<servlet-class>com.estilvivant.application.servlet.SearchServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>PersonaServlet</servlet-name>
+		<servlet-class>com.estilvivant.application.servlet.PersonaServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SearchServlet</servlet-name>
 		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PersonaServlet</servlet-name>
+		<url-pattern>/persona/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PersonaServlet</servlet-name>
+		<url-pattern>/persona</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

@@ -23,7 +23,7 @@
         <p>Ou alors vouliez-vous parler d'une des personnes suivantes&nbsp;? </p>
         <ul class="seealso">
             <c:forEach items="${ans.similarPersonae}" var="persona">
-                <li><a href="/search?q=${persona.fullName}">${persona.fullName}</a></li>
+                <li><a href="/persona/${persona.permalink}">${persona.fullName}</a></li>
             </c:forEach>
         </ul>
     </div>
