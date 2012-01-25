@@ -33,16 +33,15 @@ a img {
 	#answer {
 		margin-right: auto;
 		margin-left: auto;
-		width: 400px;
-/*		border: 1px solid red;*/
+		display: table;
 	}
 	#avatar {
 		float: left;
-		width: 200px;;
+		display: table-cell;
 	}
 	#description {
 		float: left;
-		width: 200px;
+		display: table-cell;
 		text-align: left;
 	}
 	#partners, #seealsodiv {
