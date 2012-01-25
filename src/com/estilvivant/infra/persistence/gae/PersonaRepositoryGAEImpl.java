@@ -3,6 +3,7 @@
  */
 package com.estilvivant.infra.persistence.gae;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -69,19 +70,29 @@ public enum PersonaRepositoryGAEImpl implements PersonaRepository {
         }
 	}
 
-	@Override
-	public List<Persona> fullTextSearch(final String fullText) {
+	public List<Persona> singleWordFullTextSearch(final String singleWord) {
 		final PersistenceManager pm = PMF.get().getPersistenceManager();
         try {
             final Query query = pm.newQuery(PersonaGAEImpl.class);
             query.setFilter("tokenisedNameForFullTextSearch == fullText");
             query.declareParameters("String fullText");
-            final List<Persona> personaeWithText = (List<Persona>)query.execute(fullText);
+            final List<Persona> personaeWithText = (List<Persona>)query.execute(singleWord);
             personaeWithText.size(); // See http://code.google.com/p/datanucleus-appengine/issues/detail?id=24
             return personaeWithText;
         } finally {
             pm.close();
         }
+	}
+	
+	@Override
+	public List<Persona> fullTextSearch(final String fullText) {
+		final List<Persona> accumulator = new LinkedList<Persona>();
+		//TODO: also tokenize fullText
+        for (String s : fullText.toLowerCase().split(" ")) {
+            accumulator.addAll(singleWordFullTextSearch(s));
+        }
+        //TODO sort by pertinence, ie by text distance?
+        return accumulator;
 	}
 
 	@Override
