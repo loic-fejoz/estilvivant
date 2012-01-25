@@ -3,7 +3,7 @@
  */
 package com.estilvivant.application;
 
-import java.util.List;
+import java.util.Collection;
 
 import com.estilvivant.domain.persona.FoolAnswer;
 import com.estilvivant.domain.persona.Persona;
@@ -18,7 +18,7 @@ public class FoolAnswerWrapper implements Answer {
 
 	private final String fts;
 	private final FoolAnswer foolAnswer;
-	private final List<Persona> similar;
+	private final Collection<Persona> similar;
 
 	/**
 	 * @param foolAnswer 
@@ -26,7 +26,7 @@ public class FoolAnswerWrapper implements Answer {
 	 * @param similarPersonae 
 	 * 
 	 */
-	public FoolAnswerWrapper(final String fullTextSearch, final FoolAnswer foolAnswer, final List<Persona> similarPersonae) {
+	public FoolAnswerWrapper(final String fullTextSearch, final FoolAnswer foolAnswer, final Collection<Persona> similarPersonae) {
 		this.fts = fullTextSearch;
 		this.foolAnswer = foolAnswer;
 		this.similar = similarPersonae;
@@ -73,7 +73,7 @@ public class FoolAnswerWrapper implements Answer {
 	}
 
 	@Override
-	public List<Persona> getSimilarPersonae() {
+	public Collection<Persona> getSimilarPersonae() {
 		return similar;
 	}
 

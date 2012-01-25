@@ -3,8 +3,10 @@
  */
 package com.estilvivant.infra.persistence.gae;
 
-import java.util.LinkedList;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
@@ -85,8 +87,8 @@ public enum PersonaRepositoryGAEImpl implements PersonaRepository {
 	}
 	
 	@Override
-	public List<Persona> fullTextSearch(final String fullText) {
-		final List<Persona> accumulator = new LinkedList<Persona>();
+	public Collection<Persona> fullTextSearch(final String fullText) {
+		final Set<Persona> accumulator = new LinkedHashSet<Persona>();
 		//TODO: also tokenize fullText
         for (String s : fullText.toLowerCase().split(" ")) {
             accumulator.addAll(singleWordFullTextSearch(s));
@@ -96,7 +98,7 @@ public enum PersonaRepositoryGAEImpl implements PersonaRepository {
 	}
 
 	@Override
-	public List<Persona> searchSeeAlso(Persona exactPersona) {
+	public Collection<Persona> searchSeeAlso(Persona exactPersona) {
 		return fullTextSearch(exactPersona.getFullName());
 	}
 

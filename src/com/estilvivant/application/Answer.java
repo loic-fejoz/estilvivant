@@ -3,7 +3,7 @@
  */
 package com.estilvivant.application;
 
-import java.util.List;
+import java.util.Collection;
 
 import com.estilvivant.domain.persona.Persona;
 
@@ -18,5 +18,5 @@ public interface Answer {
 	String getAvatarImageURL();
 	String getAvatarLinkURL();
 	String getAvatarAnswer();
-	List<Persona> getSimilarPersonae();
+	Collection<Persona> getSimilarPersonae();
 }

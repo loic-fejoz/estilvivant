@@ -68,4 +68,24 @@ public class PersonaGAEImpl implements Persona, StoreCallback {
 		tokenisedNameForFullTextSearch = FullTextSearch.generateToken(name, FullTextSearch.ALL_SUBSTRING);
 	}
 
+	@Override
+	public int hashCode() {
+		return permalinkPart.hashCode();
+	}
+	
+	@Override
+	public boolean equals(final Object other) {
+		if (other == this) {
+			return true;
+		}
+		if (other == null) {
+			return false;
+		}
+		if (getClass().equals(other.getClass())) {
+			// Permalink shall be the identifier thus we only compare on it.
+			final PersonaGAEImpl otherPersona = (PersonaGAEImpl)other;
+			return permalinkPart.equals(otherPersona.permalinkPart);
+		}
+		return false;
+	}
 }

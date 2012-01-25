@@ -3,7 +3,7 @@
  */
 package com.estilvivant.application;
 
-import java.util.List;
+import java.util.Collection;
 
 import com.estilvivant.domain.persona.Persona;
 
@@ -13,10 +13,10 @@ import com.estilvivant.domain.persona.Persona;
  */
 public class PersonaAnswerWrapper implements Answer {
 
-	private final List<Persona> seeAlso;
+	private final Collection<Persona> seeAlso;
 	private final Persona persona;
 
-	public PersonaAnswerWrapper(final String fullTextSearch, final Persona exactPersona, final List<Persona> seeAlsoPersonae) {
+	public PersonaAnswerWrapper(final String fullTextSearch, final Persona exactPersona, final Collection<Persona> seeAlsoPersonae) {
 		this.seeAlso = seeAlsoPersonae;
 		this.persona = exactPersona;
 	}
@@ -65,7 +65,7 @@ public class PersonaAnswerWrapper implements Answer {
 	 * @see com.estilvivant.application.Answer#getSimilarPersona()
 	 */
 	@Override
-	public List<Persona> getSimilarPersonae() {
+	public Collection<Persona> getSimilarPersonae() {
 		return seeAlso;
 	}
 

@@ -3,7 +3,7 @@
  */
 package com.estilvivant.domain.persona;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * @author loic
@@ -42,7 +42,7 @@ public interface PersonaRepository {
 	 * @ requires fullText != null
 	 * @ ensures \result != null
 	 */
-	List<Persona> fullTextSearch(String fullText);
+	Collection<Persona> fullTextSearch(String fullText);
 
 	/**
 	 * Return Persona related to the given persona.
@@ -52,5 +52,5 @@ public interface PersonaRepository {
 	 * @ requires exactPersona != null
 	 * @ ensures \result != null;
 	 */
-	List<Persona> searchSeeAlso(Persona exactPersona);
+	Collection<Persona> searchSeeAlso(Persona exactPersona);
 }

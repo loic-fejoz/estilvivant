@@ -3,7 +3,7 @@
  */
 package com.estilvivant.application;
 
-import java.util.List;
+import java.util.Collection;
 
 import com.estilvivant.domain.persona.FoolAnswerRepository;
 import com.estilvivant.domain.persona.Persona;
@@ -25,7 +25,7 @@ public enum AnswerBuilder {
 	public Answer buildAnswer(final String fullTextSearch) {
 		final Persona exactPersona = personaRepo.exactSearch(fullTextSearch);
 		if (exactPersona == null) {
-			final List<Persona> similarPersonae = personaRepo
+			final Collection<Persona> similarPersonae = personaRepo
 					.fullTextSearch(fullTextSearch);
 			return new FoolAnswerWrapper(fullTextSearch, foolRepo.random(),
 					similarPersonae);
@@ -37,7 +37,7 @@ public enum AnswerBuilder {
 
 	public Answer buildAnswer(final Persona persona) {
 		assert persona != null;
-		final List<Persona> seeAlsoPersonae = personaRepo
+		final Collection<Persona> seeAlsoPersonae = personaRepo
 				.searchSeeAlso(persona);
 		return new PersonaAnswerWrapper(persona.getFullName(), persona,
 				seeAlsoPersonae);
