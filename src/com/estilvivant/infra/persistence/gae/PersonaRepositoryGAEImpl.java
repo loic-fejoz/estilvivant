@@ -3,7 +3,6 @@
  */
 package com.estilvivant.infra.persistence.gae;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -19,9 +18,11 @@ import com.estilvivant.domain.persona.PersonaRepository;
 public enum PersonaRepositoryGAEImpl implements PersonaRepository {
 	INSTANCE;
 	
-//	static {
+	static {
 //		INSTANCE.save(INSTANCE.createPersona("Steve Jobs", "<p>Steve Jobs est mort.</p>", "Steve_Jobs"));
-//	}
+//		INSTANCE.save(INSTANCE.createPersona("Christian Morin", "<p>Non, Christian Morin n'est mort.</p>", "Christian_Morin"));
+//		INSTANCE.save(INSTANCE.createPersona("Hervé Morin", "<p>Hervé Morin n'est pas mort, sauf peut-être en politique.</p>", "Herve_Morin"));
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -73,7 +74,9 @@ public enum PersonaRepositoryGAEImpl implements PersonaRepository {
 		final PersistenceManager pm = PMF.get().getPersistenceManager();
         try {
             final Query query = pm.newQuery(PersonaGAEImpl.class);
-            final List<Persona> personaeWithText = (List<Persona>)query.execute();
+            query.setFilter("tokenisedNameForFullTextSearch == fullText");
+            query.declareParameters("String fullText");
+            final List<Persona> personaeWithText = (List<Persona>)query.execute(fullText);
             personaeWithText.size(); // See http://code.google.com/p/datanucleus-appengine/issues/detail?id=24
             return personaeWithText;
         } finally {

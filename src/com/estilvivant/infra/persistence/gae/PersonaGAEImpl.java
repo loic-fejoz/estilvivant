@@ -3,18 +3,22 @@
  */
 package com.estilvivant.infra.persistence.gae;
 
+import java.util.Set;
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+import javax.jdo.listener.StoreCallback;
 
 import com.estilvivant.domain.persona.Persona;
+import com.estilvivant.infra.fulltextsearch.FullTextSearch;
 
 /**
  * @author Loïc Fejoz
  *
  */
 @PersistenceCapable
-public class PersonaGAEImpl implements Persona {
+public class PersonaGAEImpl implements Persona, StoreCallback {
 
 	@PrimaryKey
 	@Persistent
@@ -22,6 +26,9 @@ public class PersonaGAEImpl implements Persona {
 	
 	@Persistent
 	private String name;
+	
+	@Persistent
+	private Set<String> tokenisedNameForFullTextSearch;
 	
 	@Persistent
 	private String description;
@@ -54,6 +61,11 @@ public class PersonaGAEImpl implements Persona {
 	@Override
 	public String getPermalink() {
 		return permalinkPart;
+	}
+
+	@Override
+	public void jdoPreStore() {
+		tokenisedNameForFullTextSearch = FullTextSearch.generateToken(name, FullTextSearch.ALL_SUBSTRING);
 	}
 
 }
